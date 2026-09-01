@@ -8,4 +8,11 @@ body {
     background: black;
     border-radius: 1rem;
     padding: 1rem;
+    margin: 0 10rem;
+}
+
+.player-card {
+    background: black;
+    border-radius: 1rem;
+    padding: 1rem;
 }
