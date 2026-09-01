@@ -1,0 +1,11 @@
+body {
+    text-align: center;
+    background: #c98f29;
+    color: white;
+}
+
+.game-header {
+    background: black;
+    border-radius: 1rem;
+    padding: 1rem;
+}
