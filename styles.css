@@ -11,8 +11,14 @@ body {
     margin: 0 10rem;
 }
 
+.dice-panel,
 .player-card {
     background: black;
     border-radius: 1rem;
     padding: 1rem;
+    color: white;
+}
+
+.player-image {
+    width: 4rem;
 }
