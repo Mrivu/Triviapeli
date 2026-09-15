@@ -2,6 +2,7 @@
     <head>
         <title>Trivial pursuit peli</title>
         <link rel="stylesheet" href="styles.css">
+        <script src="game.js"></script>
     </head>
     <body>
         <header class="game-header">
@@ -9,7 +10,7 @@
             <p>Kerää kaikki kategoriat</p>
         </header>
 
-        <section>
+        <section class="status-panel">
             <article class="player-card">
                 <h2>Pelaaja</h2>
                 <img src="pelaaja.jpg" class="player-image">
@@ -20,6 +21,8 @@
                 <p>Vuorossa:</p>
                 <h2>Pelaaja</h2>
                 <button>Heitä noppaa</button>
+
+                <div id="board" class="board">Tähän tulee pelilauta</div>
             </article>
 
             <article class="player-card">
