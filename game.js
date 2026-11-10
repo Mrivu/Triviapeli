@@ -76,7 +76,7 @@ function CreateBoard() {
     }
 }
 
-function RollDice() {
+async function RollDice() {
     var diceResult = Math.floor(Math.random() * 6) + 1; // Väli: 1-6
                                    
     diceBoxElement.textContent = diceResult;
@@ -87,7 +87,9 @@ function RollDice() {
 
     var currentCateogry = CATEGORIES[gameState.player.position % CATEGORIES.length];
 
-    getQuestion(currentCateogry.id);
+    //var questionData = await getQuestion(currentCateogry.id);
+
+    //ShowQuestion(questionData);
 }
 
 function UpdateTokens() {
@@ -99,8 +101,6 @@ function UpdateTokens() {
 
     var token = document.createElement("token");
     token.textContent = "P";
-    token.className = "token";
-
     currentSpace.append(token);
 }
 
@@ -119,8 +119,17 @@ async function getQuestion(targetCategory) {
         })
     });
 
+    if (!response.ok) {
+        throw new Error("Tapahtui joku ongelma :(");
+    }
+
     var data = await response.json();
     console.log(data)
-    console.log(data[0])
+    console.log(data[0].question)
+
+    return data[0]
 }
 
+function ShowQuestion(questionData) {
+    playerQuestionText.innerHTML = questionData.question;
+}
