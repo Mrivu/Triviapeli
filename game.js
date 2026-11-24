@@ -87,9 +87,14 @@ async function RollDice() {
 
     var currentCateogry = CATEGORIES[gameState.player.position % CATEGORIES.length];
 
-    //var questionData = await getQuestion(currentCateogry.id);
+    try {
+        var questionData = await getQuestion(currentCateogry.id);
+        ShowQuestion(questionData);
+    }
+    catch (error) {
+        playerQuestionText.innerHTML = error;
+    }
 
-    //ShowQuestion(questionData);
 }
 
 function UpdateTokens() {
@@ -101,6 +106,7 @@ function UpdateTokens() {
 
     var token = document.createElement("token");
     token.textContent = "P";
+    token.className = "token";
     currentSpace.append(token);
 }
 
@@ -125,9 +131,9 @@ async function getQuestion(targetCategory) {
 
     var data = await response.json();
     console.log(data)
-    console.log(data[0].question)
+    console.log(data.questions[0].question)
 
-    return data[0]
+    return data.questions[0]
 }
 
 function ShowQuestion(questionData) {
