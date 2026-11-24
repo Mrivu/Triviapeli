@@ -27,7 +27,12 @@ const BOARD_SIZE = 18;
 const boardElement = document.querySelector("#board");
 const rollButtonElement = document.querySelector("#roll-button");
 const diceBoxElement = document.querySelector("#dice-box");
+
 var playerQuestionText = document.querySelector("#question-text");
+var questionCategoryElement = document.querySelector("#question-category");
+var questionAnswersElement = document.querySelector("#question-answers");
+var feedbackElement = document.querySelector("#feedback");
+var questionPanelElement = document.querySelector("#question-panel");
 
 rollButtonElement.addEventListener("click", RollDice);
 CreateBoard();
@@ -137,5 +142,25 @@ async function getQuestion(targetCategory) {
 }
 
 function ShowQuestion(questionData) {
+    questionPanelElement.removeAttribute("hidden");
     playerQuestionText.innerHTML = questionData.question;
+    questionCategoryElement.innerHTML = questionData.category;
+
+    questionAnswersElement.innerHTML = "";
+    feedbackElement.innerHTML = "";
+
+    questionData.answers.forEach((answer, index) => {
+        var answerButton = document.createElement("button");
+        answerButton.classList = "answerButton";
+        answerButton.innerHTML = answer;
+
+        answerButton.addEventListener("click", CheckAnswer(index, questionData));
+
+        questionAnswersElement.append(answerButton);
+    });
 }
+
+function CheckAnswer(selectedIndex, questionData) {
+
+}
+
